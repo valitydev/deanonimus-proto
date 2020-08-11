@@ -71,6 +71,7 @@ java.deploy: java.settings
 	$(MVN) versions:set versions:commit -DnewVersion="$(JAVA_PKG_VERSION)" && \
 	$(MVN) deploy
 
+
 java.install: java.settings
 	$(MVN) clean && \
 	$(MVN) versions:set versions:commit -DnewVersion="$(JAVA_PKG_VERSION)" && \
