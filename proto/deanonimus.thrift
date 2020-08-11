@@ -228,3 +228,7 @@ struct ContractExpired {}
 typedef string CurrencySymbolicCode
 
 struct CurrencyRef { 1: required CurrencySymbolicCode symbolic_code }
+
+service Deanonimus {
+    list<SearchHit> searchParty(1: string text)
+}
