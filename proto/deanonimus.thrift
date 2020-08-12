@@ -87,8 +87,7 @@ typedef base.Opaque IdentityDocumentToken
 struct PartyContractor {
     1: required ContractorID id
     2: required Contractor contractor
-    3: required ContractorIdentificationLevel status
-    4: required list<IdentityDocumentToken> identity_documents
+    3: required list<IdentityDocumentToken> identity_documents
 }
 
 /** Лицо, выступающее стороной договора. */
@@ -134,12 +133,6 @@ struct InternationalLegalEntity {
     4: optional string actual_address
     /* Регистрационный номер */
     5: optional string registered_number
-}
-
-enum ContractorIdentificationLevel {
-    none = 100
-    partial = 200
-    full = 300
 }
 
 /** Банковский счёт. */
