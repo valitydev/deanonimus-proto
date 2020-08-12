@@ -82,12 +82,10 @@ union ShopLocation {
 /* Contracts */
 
 typedef base.ID ContractorID
-typedef base.Opaque IdentityDocumentToken
 
 struct PartyContractor {
     1: required ContractorID id
     2: required Contractor contractor
-    3: required list<IdentityDocumentToken> identity_documents
 }
 
 /** Лицо, выступающее стороной договора. */
