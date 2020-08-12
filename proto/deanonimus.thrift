@@ -31,53 +31,16 @@ union Blocking {
     2: Blocked   blocked
 }
 
-struct Unblocked {
-    1: required string reason
-    2: required base.Timestamp since
-}
-
-struct Blocked {
-    1: required string reason
-    2: required base.Timestamp since
-}
+struct Unblocked {}
+struct Blocked {}
 
 union Suspension {
     1: Active    active
     2: Suspended suspended
 }
 
-struct Active {
-    1: required base.Timestamp since
-}
-
-struct Suspended {
-    1: required base.Timestamp since
-}
-
-/* Common */
-
-/** Контактная информация. **/
-struct ContactInfo {
-    1: optional string phone_number
-    2: optional string email
-}
-
-/* Parties */
-typedef i64 PartyRevision
-
-/** Статусы участника **/
-/** Данная структура используется только для получения статусов Участника **/
-
-struct PartyStatus {
-    1: required PartyID id
-    2: required Blocking blocking
-    3: required Suspension suspension
-    4: required PartyRevision revision
-}
-
-struct PartyContactInfo {
-    1: required string email
-}
+struct Active {}
+struct Suspended {}
 
 /* Shops */
 
