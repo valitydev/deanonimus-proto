@@ -31,53 +31,16 @@ union Blocking {
     2: Blocked   blocked
 }
 
-struct Unblocked {
-    1: required string reason
-    2: required base.Timestamp since
-}
-
-struct Blocked {
-    1: required string reason
-    2: required base.Timestamp since
-}
+struct Unblocked {}
+struct Blocked {}
 
 union Suspension {
     1: Active    active
     2: Suspended suspended
 }
 
-struct Active {
-    1: required base.Timestamp since
-}
-
-struct Suspended {
-    1: required base.Timestamp since
-}
-
-/* Common */
-
-/** Контактная информация. **/
-struct ContactInfo {
-    1: optional string phone_number
-    2: optional string email
-}
-
-/* Parties */
-typedef i64 PartyRevision
-
-/** Статусы участника **/
-/** Данная структура используется только для получения статусов Участника **/
-
-struct PartyStatus {
-    1: required PartyID id
-    2: required Blocking blocking
-    3: required Suspension suspension
-    4: required PartyRevision revision
-}
-
-struct PartyContactInfo {
-    1: required string email
-}
+struct Active {}
+struct Suspended {}
 
 /* Shops */
 
@@ -119,19 +82,17 @@ union ShopLocation {
 /* Contracts */
 
 typedef base.ID ContractorID
-typedef base.Opaque IdentityDocumentToken
 
 struct PartyContractor {
     1: required ContractorID id
     2: required Contractor contractor
-    3: required ContractorIdentificationLevel status
-    4: required list<IdentityDocumentToken> identity_documents
 }
 
 /** Лицо, выступающее стороной договора. */
 union Contractor {
     1: LegalEntity legal_entity
-    2: RegisteredUser registered_user
+    2: RegisteredUser registered_user,
+    3: PrivateEntity private_entity
 }
 
 struct RegisteredUser {
@@ -142,6 +103,8 @@ union LegalEntity {
     1: RussianLegalEntity russian_legal_entity
     2: InternationalLegalEntity international_legal_entity
 }
+
+struct PrivateEntity {}
 
 // TODO refactor with RepresentativePerson
 /** Юридическое лицо-резидент РФ */
@@ -173,12 +136,6 @@ struct InternationalLegalEntity {
     5: optional string registered_number
 }
 
-enum ContractorIdentificationLevel {
-    none = 100
-    partial = 200
-    full = 300
-}
-
 /** Банковский счёт. */
 
 struct RussianBankAccount {
@@ -192,7 +149,7 @@ struct RussianBankAccount {
 struct Contract {
     1: required ContractID id
     2: optional ContractorID contractor_id
-    3: optional base.ID payment_institution_id
+    3: optional base.ObjectID payment_institution_id
     4: optional base.Timestamp valid_since
     5: optional base.Timestamp valid_until
     6: required ContractStatus status
@@ -207,9 +164,7 @@ union RepresentativeDocument {
 
 /** Юридическое соглашение */
 struct LegalAgreement {
-    1: required base.Timestamp signed_at
-    2: required string legal_agreement_id
-    3: optional base.Timestamp valid_until
+    1: required string legal_agreement_id
 }
 
 struct ArticlesOfAssociation {}
@@ -221,7 +176,7 @@ union ContractStatus {
 }
 
 struct ContractActive {}
-struct ContractTerminated { 1: required base.Timestamp terminated_at }
+struct ContractTerminated {}
 struct ContractExpired {}
 
 /** Символьный код, уникально идентифицирующий валюту. */
