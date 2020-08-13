@@ -91,7 +91,7 @@ struct PartyContractor {
 /** Лицо, выступающее стороной договора. */
 union Contractor {
     1: LegalEntity legal_entity
-    2: RegisteredUser registered_user,
+    2: RegisteredUser registered_user
     3: PrivateEntity private_entity
 }
 
