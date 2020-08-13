@@ -106,7 +106,6 @@ union LegalEntity {
 
 struct PrivateEntity {}
 
-// TODO refactor with RepresentativePerson
 /** Юридическое лицо-резидент РФ */
 struct RussianLegalEntity {
     /* Наименование */
@@ -158,13 +157,15 @@ struct Contract {
 }
 
 union RepresentativeDocument {
-    1: ArticlesOfAssociation articles_of_association    // устав
-    2: LegalAgreement power_of_attorney                // доверенность
+    // устав
+    1: ArticlesOfAssociation articles_of_association
+    // доверенность
+    2: LegalAgreement power_of_attorney
 }
 
 /** Юридическое соглашение */
 struct LegalAgreement {
-    1: required string legal_agreement_id
+    1: required base.ID id
 }
 
 struct ArticlesOfAssociation {}
@@ -179,10 +180,7 @@ struct ContractActive {}
 struct ContractTerminated {}
 struct ContractExpired {}
 
-/** Символьный код, уникально идентифицирующий валюту. */
-typedef string CurrencySymbolicCode
-
-struct CurrencyRef { 1: required CurrencySymbolicCode symbolic_code }
+struct CurrencyRef { 1: required base.CurrencySymbolicCode symbolic_code }
 
 service Deanonimus {
     list<SearchHit> searchParty(1: string text)
