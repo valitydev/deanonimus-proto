@@ -149,7 +149,7 @@ struct RussianBankAccount {
 struct Contract {
     1: required ContractID id
     2: optional ContractorID contractor_id
-    3: optional base.ID payment_institution_id
+    3: optional base.ObjectID payment_institution_id
     4: optional base.Timestamp valid_since
     5: optional base.Timestamp valid_until
     6: required ContractStatus status
