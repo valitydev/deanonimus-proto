@@ -91,7 +91,8 @@ struct PartyContractor {
 /** Лицо, выступающее стороной договора. */
 union Contractor {
     1: LegalEntity legal_entity
-    2: RegisteredUser registered_user
+    2: RegisteredUser registered_user,
+    3: PrivateEntity private_entity
 }
 
 struct RegisteredUser {
@@ -102,6 +103,8 @@ union LegalEntity {
     1: RussianLegalEntity russian_legal_entity
     2: InternationalLegalEntity international_legal_entity
 }
+
+struct PrivateEntity {}
 
 // TODO refactor with RepresentativePerson
 /** Юридическое лицо-резидент РФ */
