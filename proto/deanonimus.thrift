@@ -164,9 +164,7 @@ union RepresentativeDocument {
 
 /** Юридическое соглашение */
 struct LegalAgreement {
-    1: required base.Timestamp signed_at
-    2: required string legal_agreement_id
-    3: optional base.Timestamp valid_until
+    1: required string legal_agreement_id
 }
 
 struct ArticlesOfAssociation {}
@@ -178,7 +176,7 @@ union ContractStatus {
 }
 
 struct ContractActive {}
-struct ContractTerminated { 1: required base.Timestamp terminated_at }
+struct ContractTerminated {}
 struct ContractExpired {}
 
 /** Символьный код, уникально идентифицирующий валюту. */
