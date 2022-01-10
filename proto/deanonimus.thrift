@@ -1,6 +1,6 @@
 include 'base.thrift'
 
-namespace java com.rbkmoney.damsel.deanonimus
+namespace java dev.vality.damsel.deanonimus
 namespace erlang deanonimus
 
 typedef base.ID PartyID
