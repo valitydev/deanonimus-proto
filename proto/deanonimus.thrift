@@ -13,6 +13,11 @@ struct SearchHit {
     2: required Party party;
 }
 
+struct SearchShopHit {
+    1: required double score;
+    2: required Shop shop;
+}
+
 /** Участник. */
 struct Party {
     1: required PartyID id
@@ -184,4 +189,8 @@ struct CurrencyRef { 1: required base.CurrencySymbolicCode symbolic_code }
 
 service Deanonimus {
     list<SearchHit> searchParty(1: string text)
+
+    list<SearchShopsHit> searchShopById(1: string id)
+
+    list<SearchShopsHit> searchShopText(1: string text)
 }
