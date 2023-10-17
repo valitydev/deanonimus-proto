@@ -190,7 +190,7 @@ struct CurrencyRef { 1: required base.CurrencySymbolicCode symbolic_code }
 service Deanonimus {
     list<SearchHit> searchParty(1: string text)
 
-    list<SearchShopsHit> searchShopById(1: string id)
+    list<SearchShopHit> searchShopById(1: string id)
 
-    list<SearchShopsHit> searchShopText(1: string text)
+    list<SearchShopHit> searchShopText(1: string text)
 }
