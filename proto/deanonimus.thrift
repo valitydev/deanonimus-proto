@@ -16,6 +16,7 @@ struct SearchHit {
 struct SearchShopHit {
     1: required double score;
     2: required Shop shop;
+    3: required Party party;
 }
 
 /** Участник. */
