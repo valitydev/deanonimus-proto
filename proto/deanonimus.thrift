@@ -19,6 +19,12 @@ struct SearchShopHit {
     3: required Party party;
 }
 
+struct SearchIdentityHit {
+    1: required double score;
+    2: required Identity identity;
+    3: required Party party;
+}
+
 /** Участник. */
 struct Party {
     1: required PartyID id
@@ -28,6 +34,7 @@ struct Party {
     5: required map<ContractorID, PartyContractor> contractors
     6: required map<ContractID, Contract> contracts
     7: required map<ShopID, Shop> shops
+    8: optional map<IdentityID, Identity> identities
 }
 
 /* Blocking and suspension */
@@ -47,6 +54,25 @@ union Suspension {
 
 struct Active {}
 struct Suspended {}
+
+/* Identities */
+
+typedef base.ID IdentityID
+
+struct Identity {
+    1: required IdentityID id
+    2: required string name
+    3: optional map<WalletID, Wallet> wallets
+}
+
+/* Wallets */
+
+typedef base.ID WalletID
+
+struct Wallet {
+    1: required WalletID id
+    2: required string name
+}
 
 /* Shops */
 
@@ -192,4 +218,6 @@ service Deanonimus {
     list<SearchHit> searchParty(1: string text)
 
     list<SearchShopHit> searchShopText(1: string text)
+
+    list<SearchIdentityHit> searchWalletText(1: string text)
 }
