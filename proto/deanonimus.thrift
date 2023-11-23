@@ -69,7 +69,7 @@ struct Identity {
 
 typedef base.ID WalletID
 
-struct Identity {
+struct Wallet {
     1: required WalletID id
     2: required string name
 }
