@@ -84,9 +84,8 @@ struct ShopAccount {
     1: required CurrencyRef currency
     2: required AccountID settlement
     3: required AccountID guarantee
-
-    //reserved
-    // 4
+    /* Аккаунт на который выводятся деньги из системы */
+    4: required AccountID payout
 }
 
 struct ShopDetails {
