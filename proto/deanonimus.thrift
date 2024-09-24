@@ -6,7 +6,6 @@ namespace erlang deanonimus
 typedef base.ID PartyID
 typedef i64 AccountID
 typedef base.ID ContractID
-typedef base.ID PayoutToolID
 
 struct SearchHit {
     1: required double score;
@@ -77,19 +76,17 @@ struct Shop {
     5: required CategoryRef category
     6: optional ShopAccount account
     7: required ContractID contract_id
-    8: optional PayoutToolID payout_tool_id
     9: required ShopLocation location
-   10: optional BusinessScheduleRef payout_schedule
 }
 struct CategoryRef { 1: required base.ObjectID id }
-struct BusinessScheduleRef { 1: required base.ObjectID id }
 
 struct ShopAccount {
     1: required CurrencyRef currency
     2: required AccountID settlement
     3: required AccountID guarantee
-    /* Аккаунт на который выводятся деньги из системы */
-    4: required AccountID payout
+
+    //reserved
+    // 4
 }
 
 struct ShopDetails {
