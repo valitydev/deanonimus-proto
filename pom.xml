@@ -35,7 +35,7 @@
         <dependency>
             <groupId>dev.vality</groupId>
             <artifactId>damsel</artifactId>
-            <version>1.538-5addc41</version>
+            <version>1.646-7762f6c</version>
         </dependency>
         <dependency>
             <groupId>javax.annotation</groupId>
