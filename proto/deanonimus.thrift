@@ -85,6 +85,7 @@ struct ShopAccount {
     2: required AccountID settlement
     3: required AccountID guarantee
     /* Аккаунт на который выводятся деньги из системы */
+    // deprecated
     4: required AccountID payout
 }
 
